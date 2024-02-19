@@ -4,6 +4,6 @@ class UserEventCreateService
   end
 
   def call
-    
+    UserEvent.create!(user_id: event_params[:event_id], event_id: event_params[:user_id])
   end
 end
