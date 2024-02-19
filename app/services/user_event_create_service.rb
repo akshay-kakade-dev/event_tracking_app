@@ -1,4 +1,4 @@
-class EventCreateService
+class UserEventCreateService
   def initialize(event_params:)
     @event_params = event_params
   end
