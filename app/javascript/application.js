@@ -2,26 +2,19 @@
 import "@hotwired/turbo-rails"
 import "controllers"
 
-
 // app/assets/javascripts/application.js
-$(document).on('turbolinks:load', function() {
-  $('.api-call-button').on('click', function(e) {
-    e.preventDefault(); // Prevent the default form submission
+import { Application } from "@hotwired/stimulus"
+import 'jquery/dist/jquery'; // Use absolute path
 
-    var url = $(this).attr('href'); // Get the URL from the button's href attribute
+import { definitionsFromContext } from "@hotwired/stimulus-webpack-helpers"
 
-    // Make the AJAX request
-    $.ajax({
-      url: url,
-      type: 'GET',
-      success: function(response) {
-        // Handle the successful response
-        console.log(response);
-      },
-      error: function(xhr) {
-        // Handle errors
-        console.error(xhr.responseText);
-      }
-    });
-  });
-});
+const application = Application.start()
+const context = require.context("../controllers", true, /\.js$/)
+application.load(definitionsFromContext(context))
+
+// Configure Stimulus development experience
+application.debug = false
+window.Stimulus   = application
+
+export { application }
+

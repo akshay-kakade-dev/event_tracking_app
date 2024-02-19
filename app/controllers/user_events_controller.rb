@@ -8,6 +8,6 @@ class UserEventsController < ApplicationController
   protected
   
   def event_params
-    params.require(:user_event).permit(:type, :user_id, :event_id)
+    params.require(:user_event).permit(:user_id, :event_id)
   end
 end
