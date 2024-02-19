@@ -5,4 +5,5 @@ Rails.application.routes.draw do
   # root "articles#index"
 
   resources :user_events, only: :create
+  resources :events, only: :index
 end
