@@ -1,7 +1,7 @@
 class Iterable::TrackEventService
   attr_reader :payload
   
-  def initialize(payload: payload)
+  def initialize(payload:)
     @payload = payload  
   end
 
@@ -12,9 +12,9 @@ class Iterable::TrackEventService
     end
 
     api_response = conn.post("api/events/track") do |request|
-      req.headers['Content-Type'] = 'application/json'
+      request.headers['Content-Type'] = 'application/json'
 
-      req.body = payload.to_json
+      request.body = payload.to_json
     end
 
     json_response = JSON.parse(api_response.body) rescue { error: "Invalid JSON with response code: #{api_response.status}" }

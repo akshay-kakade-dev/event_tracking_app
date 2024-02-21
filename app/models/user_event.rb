@@ -13,7 +13,7 @@ class UserEvent < ApplicationRecord
   def sync_events
     TrackEventService.new(user_event: self).call
 
-    if event.event_type == 'B'
+    if event.category == 'B'
       SendEmailToUser.new(user_event: self).call
     end
   end

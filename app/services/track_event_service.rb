@@ -3,7 +3,7 @@ class TrackEventService
   attr_reader :user_event
 
   def initialize(user_event:)
-    @user_event: user_event
+    @user_event = user_event
   end
 
   def call
