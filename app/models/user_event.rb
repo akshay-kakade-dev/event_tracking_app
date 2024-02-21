@@ -3,14 +3,14 @@ class UserEvent < ApplicationRecord
   belongs_to :user
   belongs_to :event
 
-  after_create :call_api_if_event_type_b
+  after_create :sync_events
 
   private
 
   # blog for choosing which client
   #https://www.scrapingdog.com/blog/ruby-http-clients/
 
-  def call_api_if_event_type_b
+  def sync_events
     TrackEventService.new(user_event: self).call
 
     if event.event_type == 'B'

@@ -1,4 +1,4 @@
-class Iterable::TrackEventService
+class Iterable::SendEmailToUserService
   attr_reader :payload
   
   def initialize(payload: payload)
@@ -11,7 +11,7 @@ class Iterable::TrackEventService
       faraday.adapter Faraday.default_adapter
     end
 
-    api_response = conn.post("api/events/track") do |request|
+    api_response = conn.post("api/email/target") do |request|
       req.headers['Content-Type'] = 'application/json'
 
       req.body = payload.to_json

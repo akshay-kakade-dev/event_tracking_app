@@ -2,7 +2,13 @@ class UserEventsController < ApplicationController
 
   def create
     service = UserEventCreateService(event_params: event_params)
-    service.call
+    result = service.call
+
+    if result[:success] == true
+      render json: { success: true, data: result[:data] }, status: :created
+    else
+      render json: { success: false, errors: resource.errors }, status: :unprocessable_entity
+    end
   end
 
   protected
