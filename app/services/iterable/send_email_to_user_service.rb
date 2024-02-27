@@ -1,11 +1,10 @@
 class Iterable::SendEmailToUserService
   attr_reader :payload
   
-  def initialize(payload:)
-    @payload = payload  
+  def initialize()
   end
 
-  def call
+  def call(payload:)
     conn = Faraday.new(url: 'https://api.iterable.com/') do |faraday|
       # Set Faraday adapter, you can use different adapters based on your needs
       faraday.adapter Faraday.default_adapter

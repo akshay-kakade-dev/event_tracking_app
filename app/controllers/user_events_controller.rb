@@ -1,7 +1,7 @@
 class UserEventsController < ApplicationController
 
   def create
-    service = UserEventCreateService(event_params: event_params)
+    service = UserEventCreateService.new(event_params: event_params)
     result = service.call
 
     if result[:success] == true

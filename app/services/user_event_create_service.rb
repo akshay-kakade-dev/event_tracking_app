@@ -1,6 +1,6 @@
 class UserEventCreateService
 
-  attr_accessor :user_event
+  attr_accessor :event_params
 
   def initialize(event_params:)
     @event_params = event_params

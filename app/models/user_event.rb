@@ -11,10 +11,12 @@ class UserEvent < ApplicationRecord
   #https://www.scrapingdog.com/blog/ruby-http-clients/
 
   def sync_events
-    TrackEventService.new(user_event: self).call
+    iterable_service = Iterable::TrackEventService.new
+    TrackEventService.new(user_event: self, api_service: iterable_service).call
 
     if event.category == 'B'
-      SendEmailToUser.new(user_event: self).call
+      iterable_service = Iterable::SendEmailToUserService.new
+      SendEmailToUser.new(user_event: self, api_service: iterable_service).call
     end
   end
 end

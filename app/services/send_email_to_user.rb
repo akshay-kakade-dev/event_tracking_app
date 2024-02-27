@@ -2,13 +2,13 @@ class SendEmailToUser
 
   attr_reader :user_event
 
-  def initialize(user_event:)
+  def initialize(user_event:, api_service:)
     @user_event = user_event
   end
 
   def call
     payload = generate_event_payload()
-    Iterable::SendEmailToUserService.new(payload: payload).call
+    api_service.call(payload: payload)
   end
 
   def generate_event_payload()
