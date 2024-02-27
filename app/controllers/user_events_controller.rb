@@ -1,9 +1,11 @@
 class UserEventsController < ApplicationController
+  before_action :authenticate_request
+
 
   def create
     # use adapater to change the implementation in future
     adapter = Postgres::UserEvent::Create.new
-    service = UserEventCreateService.new(event_params: event_params, adapter: adapter)
+    service = UserEventCreateService.new(event_params: event_params.merge(user_id: @current_user.id), adapter: adapter)
     result = service.call
 
     if result[:success] == true
@@ -16,6 +18,6 @@ class UserEventsController < ApplicationController
   protected
   
   def event_params
-    params.require(:user_event).permit(:user_id, :event_id)
+    params.require(:user_event).permit(:event_id)
   end
 end

@@ -50,6 +50,10 @@ gem "bootsnap", require: false
 # to call the apis
 gem 'faraday'
 
+# for setting up authentication
+gem 'bcrypt'
+gem 'jwt'
+
 
 # Use Sass to process CSS
 # gem "sassc-rails"

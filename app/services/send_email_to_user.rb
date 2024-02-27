@@ -1,9 +1,10 @@
 class SendEmailToUser 
 
-  attr_reader :user_event
+  attr_reader :user_event, :api_service
 
   def initialize(user_event:, api_service:)
     @user_event = user_event
+    @api_service = api_service
   end
 
   def call
