@@ -1,26 +1,13 @@
 class UserEventCreateService
 
-  attr_accessor :event_params
+  attr_accessor :event_params, :adapter
 
-  def initialize(event_params:)
+  def initialize(event_params:, adapter:)
     @event_params = event_params
+    @adapter = adapter
   end
 
   def call
-    user_event = UserEvent.create!(user_id: event_params[:event_id], event_id: event_params[:user_id])
-
-    if user_event.persisted?
-      {
-        success: true,
-        data: {
-          id: user_event.id
-        }
-      }
-    else
-      {
-        success: false,
-        errors: resource.errors
-      }
-    end
+    adapter.call(row_attrs: event_params)
   end
 end

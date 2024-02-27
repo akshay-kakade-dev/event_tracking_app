@@ -1,7 +1,9 @@
 class UserEventsController < ApplicationController
 
   def create
-    service = UserEventCreateService.new(event_params: event_params)
+    # use adapater to change the implementation in future
+    adapter = Postgres::UserEvent::Create.new
+    service = UserEventCreateService.new(event_params: event_params, adapter: adapter)
     result = service.call
 
     if result[:success] == true
