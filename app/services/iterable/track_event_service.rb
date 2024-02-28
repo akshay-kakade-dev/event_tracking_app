@@ -1,3 +1,4 @@
+# service to actully track the ierable event using iterable api
 class Iterable::TrackEventService
   attr_reader :payload
   

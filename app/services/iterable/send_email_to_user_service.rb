@@ -1,3 +1,4 @@
+# service to send actual email data to iterable
 class Iterable::SendEmailToUserService
   attr_reader :payload
   

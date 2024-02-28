@@ -1,3 +1,4 @@
+# generalize user_event_create service, irrespective of database
 class UserEventCreateService
 
   attr_accessor :event_params, :adapter

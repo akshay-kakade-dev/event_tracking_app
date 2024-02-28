@@ -1,3 +1,5 @@
+# generalised send email to user service, #irrespetive of it's adapter like iterabe
+
 class SendEmailToUser 
 
   attr_reader :user_event, :api_service

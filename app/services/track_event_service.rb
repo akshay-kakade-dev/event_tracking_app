@@ -1,3 +1,4 @@
+# generalised track event service, #irrespetive of it's adapter like iterabe
 class TrackEventService 
 
   attr_reader :user_event, :api_service
