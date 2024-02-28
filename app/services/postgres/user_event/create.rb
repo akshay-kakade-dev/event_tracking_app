@@ -1,6 +1,6 @@
 class Postgres::UserEvent::Create
   def call(row_attrs:)
-    user_event = UserEvent.create!(user_id: row_attrs[:user_id], event_id: row_attrs[:event_id])
+    user_event = UserEvent.create(user_id: row_attrs[:user_id], event_id: row_attrs[:event_id])
 
     if user_event.persisted?
       {
@@ -12,7 +12,7 @@ class Postgres::UserEvent::Create
     else
       {
         success: false,
-        errors: resource.errors
+        errors: user_event.errors
       }
     end
   end

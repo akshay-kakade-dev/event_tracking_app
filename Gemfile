@@ -67,6 +67,7 @@ group :development, :test do
   gem 'webmock', require: false
   gem 'rspec-rails', '~> 5.0.0'
   gem 'pry'
+  gem 'faker'
 end
 
 group :development do
