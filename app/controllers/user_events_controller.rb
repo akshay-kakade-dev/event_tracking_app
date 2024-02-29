@@ -11,7 +11,7 @@ class UserEventsController < ApplicationController
     if result[:success] == true
       render json: { success: true, data: result[:data] }, status: :created
     else
-      render json: { success: false, errors: resource.errors }, status: :unprocessable_entity
+      render json: { success: false, errors: result[:errors] }, status: :unprocessable_entity
     end
   end
 
