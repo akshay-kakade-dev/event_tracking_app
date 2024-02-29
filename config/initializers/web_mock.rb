@@ -1,7 +1,7 @@
 # config/initializers/webmock.rb
 require 'webmock'
 
-if Rails.env.development?
+if Rails.env.development? || Rails.env.test?
   WebMock.enable!
   
   # Define your mocks here
