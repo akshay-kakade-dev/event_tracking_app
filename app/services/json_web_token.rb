@@ -1,5 +1,6 @@
 require 'jwt'
 
+# service to encrypt and decrypt jwt token
 class JsonWebToken
   def self.encode(payload)
     JWT.encode(payload, Rails.application.secrets.secret_key_base)

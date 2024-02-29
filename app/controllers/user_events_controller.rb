@@ -1,7 +1,7 @@
 class UserEventsController < ApplicationController
   before_action :authenticate_request
 
-
+  # track the event pushed by the user
   def create
     # use adapater to change the implementation in future
     adapter = Postgres::UserEvent::Create.new
