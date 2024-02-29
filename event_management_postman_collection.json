@@ -1,0 +1,45 @@
+{
+	"info": {
+		"_postman_id": "2900b714-d9dc-48ac-a5f5-f93ca3a44d3c",
+		"name": "Event Management",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "15993723",
+		"_collection_link": "https://www.postman.com/payload-geologist-93651907/workspace/event-managemtn/collection/15993723-2900b714-d9dc-48ac-a5f5-f93ca3a44d3c?action=share&source=collection_link&creator=15993723"
+	},
+	"item": [
+		{
+			"name": "User Event Creation",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "eyJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjoxfQ.tJUSbaSoiN0AGdUarhz6bJMlx19paG3xdt5rhkenRJw",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"event_id\": 3\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:3001/user_events",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3001",
+					"path": [
+						"user_events"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
