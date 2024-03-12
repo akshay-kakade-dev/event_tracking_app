@@ -12,6 +12,11 @@ RSpec.describe SendEmailToUser do
 
   before do
     # Freeze time to a specific point
+    WebMock.stub_request(:post, "https://api.iterable.com/api/events/track")
+      .to_return(status: 200, body: "{\"data\": \"mocked_response\"}", headers: {})
+
+    WebMock.stub_request(:post, "https://api.iterable.com/api/email/target")
+      .to_return(status: 200, body: "{\"data\": \"mocked_response\"}", headers: {})
     Timecop.freeze(current_time)
   end
 

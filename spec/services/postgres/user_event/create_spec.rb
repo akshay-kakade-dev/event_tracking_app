@@ -2,6 +2,15 @@
 require 'rails_helper'
 
 RSpec.describe Postgres::UserEvent::Create do
+
+  before {
+    WebMock.stub_request(:post, "https://api.iterable.com/api/events/track")
+      .to_return(status: 200, body: "{\"data\": \"mocked_response\"}", headers: {})
+
+    WebMock.stub_request(:post, "https://api.iterable.com/api/email/target")
+      .to_return(status: 200, body: "{\"data\": \"mocked_response\"}", headers: {})
+  }
+
   describe '#call' do
     context 'when user event creation is successful' do
       let(:user) { User.create(name: Faker::Name.name, email: Faker::Internet.email) }
